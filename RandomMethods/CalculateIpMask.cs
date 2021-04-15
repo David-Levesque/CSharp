@@ -41,17 +41,17 @@ namespace RandomMethods
         //to see whats going on this way
         private string BroadcastMaker(int[] invertedMask, int[] ipArrayInt)
         {
-            var stringzo = "";
+            var str = "";
             for (int i = 0; i < 4; i++)
             {
-                var nummy = invertedMask[i] | ipArrayInt[i];
-                stringzo += nummy.ToString();
+                var number = invertedMask[i] | ipArrayInt[i];
+                str += number.ToString();
                 if (i < 3)
                 {
-                    stringzo += ".";
+                    str += ".";
                 }
             }
-            return stringzo;
+            return str;
         }
 
         private string NetworkMaker(int[] maskArrayInt, int[] ipArrayInt)
