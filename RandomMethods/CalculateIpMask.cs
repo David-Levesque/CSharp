@@ -6,7 +6,6 @@ namespace RandomMethods
 {
     public class CalculateIpMask
     {
-        //getsetmissing
         public Dictionary<string, int> map;
 
         public CalculateIpMask()
@@ -21,8 +20,9 @@ namespace RandomMethods
                 { "01111111",127 }
             };
         }
-        public void Display(string ip)
+        public Dictionary<string,string> Display(string ip)
         {
+            var dic = new Dictionary<string,string>();
             var FullIpThenMask = ip.Split('/');
             var mask = Int16.Parse(FullIpThenMask[1]);
             var ipArrayInt = IntMaker(FullIpThenMask[0].Split('.'));
@@ -31,13 +31,18 @@ namespace RandomMethods
             var networkAd = NetworkMaker(maskArrayIntNetwork, ipArrayInt);
             var broadCastAd = BroadcastMaker(invertedMask, ipArrayInt);
 
-            Console.WriteLine($"Ip: {FullIpThenMask[0]}\n");
-            Console.WriteLine($"Mask: {FullIpThenMask[1]}\n");
-            Console.WriteLine($"Network Address: {networkAd}");
-            Console.WriteLine($"Broadcast Address: {broadCastAd}");
+            dic.Add("IP", FullIpThenMask[0]);
+            dic.Add("Mask", FullIpThenMask[1]);
+            dic.Add("Network Address", networkAd);
+            dic.Add("Broadcast Address", broadCastAd);
+            return dic;
+            //Console.WriteLine($"Ip: {FullIpThenMask[0]}");
+            //Console.WriteLine($"Mask: {FullIpThenMask[1]}");
+            //Console.WriteLine($"Network Address: {networkAd}");
+            //Console.WriteLine($"Broadcast Address: {broadCastAd}");
         }
 
-        //note i could have made broadcast and network maker one method but i thought this might be easier
+        //note i could have made broadcast and network maker one method but i thought it might be easier
         //to see whats going on this way
         private string BroadcastMaker(int[] invertedMask, int[] ipArrayInt)
         {
