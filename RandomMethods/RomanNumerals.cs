@@ -6,7 +6,7 @@ namespace RandomMethods
 {
     public class RomanNumerals
     {
-        public Dictionary<string,int> ValueMap { get; set; }
+        public Dictionary<string, int> ValueMap;
 
         public RomanNumerals()
         {
